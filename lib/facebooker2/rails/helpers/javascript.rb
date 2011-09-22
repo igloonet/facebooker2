@@ -17,11 +17,12 @@ module Facebooker2
           status = opts[:status]
           xfbml = opts[:xfbml]
           channel_url = opts[:channel_url]
-	  locale = options[:locale] || "en_US"
+          locale = options[:locale] || "en_US"
           extra_js = capture(&proc) if block_given?
           js = <<-JAVASCRIPT
           <script>
             window.fbAsyncInit = function() {
+              FB._https = true;
               FB.init({
                 appId  : '#{app_id}',
                 status : #{status}, // check login status
